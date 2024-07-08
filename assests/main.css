@@ -1,0 +1,70 @@
+.main{
+
+    flex-grow: 1;
+}
+
+.logo{
+        height: 50px ;
+      
+        padding: 10px;
+
+}
+.nbar{
+
+        background-color: #91C8FA;
+}
+
+.chk{
+
+border-color: black ;
+
+}
+.card {
+        text-align: center; 
+        margin-bottom: 20px; 
+    }
+    .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%; 
+    }
+    .card-img-top {
+        max-width: 100%;
+        height: auto; 
+        min-height: 150px;
+        object-fit: cover; 
+        object-fit: cover; 
+    }
+    .card-title {
+        margin-top: 10px; 
+    }
+    .card-text {
+        margin-bottom: 10px; 
+    }
+    .card-price {
+        font-size: 1.25rem;
+    }
+
+    .btn-detail{
+
+        background-color: #91C8FA;
+
+}
+
+footer {
+    background-color: #91C8FA;
+    padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.social-icons img {
+    width: 40px; /* Tamaño de las imágenes de redes sociales */
+    height: 40px;
+    border-radius: 50%; /* Forma circular para las imágenes */
+}
+.cohort-text {
+    margin-right: 20px; /* Espacio a la derecha del texto "cohort" */
+}
