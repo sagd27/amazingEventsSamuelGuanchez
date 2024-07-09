@@ -83,3 +83,23 @@ footer {
     max-height: 300px;
 
 }
+
+.table-bordered {
+    border: 1px solid black;
+  }
+  .table-bordered td, .table-bordered th {
+    border: 1px solid black;
+  }
+
+  .text-celdas{
+
+    font-size: 10px;
+
+}
+.bg-azul{
+    background-color: #007bff !important; 
+
+}
+.table {
+    background-color: transparent;
+  }
