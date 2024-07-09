@@ -79,7 +79,7 @@ footer {
 .img-detail{
 
     object-fit: cover;
-     height: 100%;
-      max-height: 300px;
+    height: 100%;
+    max-height: 300px;
 
 }
