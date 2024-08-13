@@ -24,14 +24,15 @@ border-color: black ;
 
 }
 .card {
-       width: 400px;
-       
+       min-width: 300px;
+       max-width: 400px
     }
 
    .card-img-top{
 
     height: 200px;
-    width: 400px;
+    min-width: 300px;
+    max-width: 400px;
     object-fit: cover;
 }
 
