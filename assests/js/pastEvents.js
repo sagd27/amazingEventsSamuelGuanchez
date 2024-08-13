@@ -208,21 +208,16 @@ if (eventDate < currentDate) {
 
  let tarjeta = document.createElement("div");
   tarjeta.className = "card";
-  tarjeta.innerHTML= `<img
-                    src="${evento.image}"
-                    class="card-img-top"  
-                    alt="${evento.img}"
-                  />
-                  <div class="card-body">
-                    <h5 class="card-title">${evento.name}</h5>
-                    <p class="card-text">${evento.description}</p>
-                    <div class = " d-flex justify-content-center align-items-center">
-                    <p class="card-price">${evento.price}</p>
-                    <a href="./Details.html" class="btn btn-detail">
-                      Detalles
-                    </a>
-                  </div>
-                </div>`
+  tarjeta.innerHTML= `
+  <img src="${evento.image}" class="card-img-top" alt="${evento.img}" style="object-fit: cover;"/>
+   <div class="card-body">
+       <h5 class="card-title">${evento.name}</h5>
+       <p class="card-text">Description: ${evento.description}</p>
+       <p>Price: $${evento.price}</p>
+       <div class="d-flex justify-content-between align-items-center ">
+           <a href="./details.html?id=${evento._id}" class="btn btn-primary">Details</a>
+       </div>
+   </div>`
 
             console.log(tarjeta);
 
@@ -269,22 +264,16 @@ function displayEvents(filteredEvents) {
         let evento = filteredEvents[i];
         let tarjeta = document.createElement("div");
         tarjeta.className = "card";
-        tarjeta.innerHTML = `
-            <img
-                src="${evento.image}"
-                class="card-img-top"
-                alt="${evento.img}"
-            />
-            <div class="card-body">
-                <h5 class="card-title">${evento.name}</h5>
-                <p class="card-text">${evento.description}</p>
-                <div class="d-flex justify-content-center align-items-center">
-                    <p class="card-price">${evento.price}</p>
-                    <a href="./Details.html" class="btn btn-detail">
-                        Detalles
-                    </a>
-                </div>
-            </div>`;
+        tarjeta.innerHTML =  `
+        <img src="${evento.image}" class="card-img-top" alt="${evento.img}" style="object-fit: cover;"/>
+         <div class="card-body">
+             <h5 class="card-title">${evento.name}</h5>
+             <p class="card-text">Description: ${evento.description}</p>
+             <p>Price: $${evento.price}</p>
+             <div class="d-flex justify-content-between align-items-center ">
+                 <a href="./details.html?id=${evento._id}" class="btn btn-primary">Details</a>
+             </div>
+         </div>`;
         
         contenedor.appendChild(tarjeta);
     }

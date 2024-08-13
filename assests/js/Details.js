@@ -196,112 +196,38 @@ const data = {
 
 };
 
-let contenedor = document.getElementById("contenedor");
-let currentDate = new Date(data.currentDate);
-
-
-for (let i = 0; i < data.events.length; i++) {
- let evento =  data.events[i];
-let eventDate = new Date(evento.date);
-
-if (eventDate >= currentDate) {
-
- let tarjeta = document.createElement("div");
-  tarjeta.className = "card";
-  tarjeta.innerHTML= `
-  <img src="${evento.image}" class="card-img-top" alt="${evento.img}" style="object-fit: cover;"/>
-   <div class="card-body">
-       <h5 class="card-title">${evento.name}</h5>
-       <p class="card-text">Description: ${evento.description}</p>
-       <p>Price: $${evento.price}</p>
-       <div class="d-flex justify-content-between align-items-center ">
-           <a href="./details.html?id=${evento._id}" class="btn btn-primary">Details</a>
-       </div>
-   </div>`;
-
-            console.log(tarjeta);
-
-              contenedor.appendChild(tarjeta)
  
-        }
-}
+ // Obtener el parámetro de consulta 'id' de la URL
+const urlParams = new URLSearchParams(window.location.search);
+const eventId = urlParams.get('id');
 
+// Buscar el evento seleccionado por ID
+const selectedEvent = data.events.find(evento => evento._id === eventId);
 
-
-// Filtrar los eventos por fecha
-let futureEvents = data.events.filter(evento => new Date(evento.date) >= currentDate);
-
-// Generar checkboxes para las categorías de los eventos filtrados por fecha
-let checkboxContainer = document.getElementById("checkboxContainer");
-let categoriasUnicas = [...new Set(futureEvents.map(evento => evento.category))];
-
-for (let i = 0; i < categoriasUnicas.length; i++) {
-    let categoria = categoriasUnicas[i];
-
-    let checkboxDiv = document.createElement("div");
-    checkboxDiv.className = "form-check";
-
-    checkboxDiv.innerHTML = `
-        <input
-            type="checkbox"
-            class="form-check-input chk"
-            id="${categoria}"
-            name="${categoria}"
-            value="${categoria}"
+// Mostrar la tarjeta del evento seleccionado
+if (selectedEvent) {
+    let eventoDetalle = document.getElementById("eventoDetalle");
+    let tarjeta = document.createElement("div");
+    tarjeta.className = "card";
+    tarjeta.style.width = "18rem";
+    tarjeta.innerHTML = `
+        <img
+            src="${selectedEvent.image}"
+            class="card-img-top"
+            alt="${selectedEvent.img}"
         />
-        <label class="form-check-label" for="${categoria}">
-            ${categoria}
-        </label>
-    `;
-
-    checkboxContainer.appendChild(checkboxDiv);
+        <div class="card-body">
+            <h5 class="card-title">${selectedEvent.name}</h5>
+            <p class="card-text">${selectedEvent.description}</p>
+            <p class="card-text"><strong>Category:</strong> ${selectedEvent.category}</p>
+            <p class="card-text"><strong>Place:</strong> ${selectedEvent.place}</p>
+            <p class="card-text"><strong>Date:</strong> ${selectedEvent.date}</p>
+            <p class="card-text"><strong>Price:</strong> $${selectedEvent.price}</p>
+            <!-- Puedes agregar más detalles aquí -->
+        </div>`;
+    
+    eventoDetalle.appendChild(tarjeta);
+} else {
+    // Mostrar un mensaje si no hay evento seleccionado
+    document.getElementById("eventoDetalle").innerHTML = "<p>No hay detalles para mostrar.</p>";
 }
-
-function displayEvents(filteredEvents) {
-  contenedor.innerHTML = ""; // Limpiar el contenedor antes de agregar los eventos filtrados
-
-  for (let i = 0; i < filteredEvents.length; i++) {
-      let evento = filteredEvents[i];
-      let tarjeta = document.createElement("div");
-      tarjeta.className = "card";
-      tarjeta.innerHTML =  `
-      <img src="${evento.image}" class="card-img-top" alt="${evento.img}" style="object-fit: cover;"/>
-       <div class="card-body">
-           <h5 class="card-title">${evento.name}</h5>
-           <p class="card-text">Description: ${evento.description}</p>
-           <p>Price: $${evento.price}</p>
-           <div class="d-flex justify-content-between align-items-center ">
-               <a href="./details.html?id=${evento._id}" class="btn btn-primary">Details</a>
-           </div>
-       </div>`;
-      
-      contenedor.appendChild(tarjeta);
-  }
-}
-
-// Función para filtrar eventos por categorías seleccionadas y búsqueda
-function filterEvents() {
-  let selectedCategories = Array.from(document.querySelectorAll('#checkboxContainer input:checked')).map(cb => cb.value);
-  let searchTerm = searchBar.value.toLowerCase();
-
-  let filteredEvents = futureEvents.filter(evento => {
-      let matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(evento.category);
-      let matchesSearch = evento.name.toLowerCase().includes(searchTerm) || evento.description.toLowerCase().includes(searchTerm);
-      return matchesCategory && matchesSearch;
-  });
-
-  displayEvents(filteredEvents);
-}
-
-// Agregar evento change a cada checkbox para filtrar cuando se seleccione o deseleccione
-let checkboxes = document.querySelectorAll('#checkboxContainer input[type="checkbox"]');
-checkboxes.forEach(checkbox => {
-  checkbox.addEventListener('change', filterEvents);
-});
-
-// Agregar evento input a la barra de búsqueda para filtrar mientras se escribe
-let searchBar = document.querySelector('#search-bar input[type="text"]');
-searchBar.addEventListener('input', filterEvents);
-
-// Mostrar todos los eventos futuros inicialmente
-displayEvents(futureEvents);
