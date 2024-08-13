@@ -230,3 +230,89 @@ if (eventDate < currentDate) {
  
         }
 }
+
+
+// Filtrar los eventos por fecha (eventos pasados)
+let pastEvents = data.events.filter(evento => new Date(evento.date) < currentDate);
+
+// Generar checkboxes para las categorías de los eventos pasados
+let checkboxContainer = document.getElementById("checkboxContainer");
+let categoriasUnicas = [...new Set(pastEvents.map(evento => evento.category))];
+
+for (let i = 0; i < categoriasUnicas.length; i++) {
+    let categoria = categoriasUnicas[i];
+
+    let checkboxDiv = document.createElement("div");
+    checkboxDiv.className = "form-check";
+
+    checkboxDiv.innerHTML = `
+        <input
+            type="checkbox"
+            class="form-check-input chk"
+            id="${categoria}"
+            name="${categoria}"
+            value="${categoria}"
+        />
+        <label class="form-check-label" for="${categoria}">
+            ${categoria}
+        </label>
+    `;
+
+    checkboxContainer.appendChild(checkboxDiv);
+}
+
+// Función para mostrar los eventos filtrados
+function displayEvents(filteredEvents) {
+    contenedor.innerHTML = ""; // Limpiar el contenedor antes de agregar los eventos filtrados
+
+    for (let i = 0; i < filteredEvents.length; i++) {
+        let evento = filteredEvents[i];
+        let tarjeta = document.createElement("div");
+        tarjeta.className = "card";
+        tarjeta.innerHTML = `
+            <img
+                src="${evento.image}"
+                class="card-img-top"
+                alt="${evento.img}"
+            />
+            <div class="card-body">
+                <h5 class="card-title">${evento.name}</h5>
+                <p class="card-text">${evento.description}</p>
+                <div class="d-flex justify-content-center align-items-center">
+                    <p class="card-price">${evento.price}</p>
+                    <a href="./Details.html" class="btn btn-detail">
+                        Detalles
+                    </a>
+                </div>
+            </div>`;
+        
+        contenedor.appendChild(tarjeta);
+    }
+}
+
+// Función para filtrar eventos por categorías seleccionadas y búsqueda
+function filterEvents() {
+    let selectedCategories = Array.from(document.querySelectorAll('#checkboxContainer input:checked')).map(cb => cb.value);
+    let searchTerm = searchBar.value.toLowerCase();
+
+    let filteredEvents = pastEvents.filter(evento => {
+        let matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(evento.category);
+        let matchesSearch = evento.name.toLowerCase().includes(searchTerm) || evento.description.toLowerCase().includes(searchTerm);
+        return matchesCategory && matchesSearch;
+    });
+
+    displayEvents(filteredEvents);
+}
+
+// Agregar evento change a cada checkbox para filtrar cuando se seleccione o deseleccione
+let checkboxes = document.querySelectorAll('#checkboxContainer input[type="checkbox"]');
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', filterEvents);
+});
+
+// Agregar evento input a la barra de búsqueda para filtrar mientras se escribe
+let searchBar = document.querySelector('#search-bar input[type="text"]');
+searchBar.addEventListener('input', filterEvents);
+
+// Mostrar todos los eventos pasados inicialmente
+displayEvents(pastEvents);

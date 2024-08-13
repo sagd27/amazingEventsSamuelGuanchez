@@ -15,6 +15,9 @@
         background-color: #91C8FA;
 }
 
+.search-bar {
+    max-width: 300px; /* Ajusta el tamaño máximo según tus necesidades */
+  }
 .chk{
 
 border-color: black ;
