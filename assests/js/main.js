@@ -3,7 +3,7 @@
 import * as pintartarjertas from "../modulos/modulo.js"
 
 fetch('https://aulamindhub.github.io/amazing-api/events.json')
-    .then(response => response.json()) // Convierte la respuesta a JSON
+    .then(response => response.json())
     .then(data => {
        
       // Usar el módulo para pintar las tarjetas con los eventos obtenidos
@@ -15,7 +15,7 @@ fetch('https://aulamindhub.github.io/amazing-api/events.json')
         // Crear los checkboxes de las categorías
         pintartarjertas.createcheckbox(categoriasUnicas);
 
-        // Asumiendo que data, contenedor, checkboxes, y searchBar están definidos en main.js
+    
         let checkboxes = document.querySelectorAll('#checkboxContainer input[type="checkbox"]');
         let searchBar = document.querySelector('#search-bar input[type="text"]');
         let contenedor = document.querySelector('#contenedor'); // Define dónde se mostrarán los eventos
@@ -25,7 +25,6 @@ fetch('https://aulamindhub.github.io/amazing-api/events.json')
           checkbox.addEventListener('change', () => pintartarjertas.filterEvents(data, contenedor, checkboxes, searchBar));
         });
 
-        // Agregar evento input a la barra de búsqueda para filtrar mientras se escribe
         searchBar.addEventListener('input', () => pintartarjertas.filterEvents(data, contenedor, checkboxes, searchBar));
 
         // Mostrar todos los eventos inicialmente
