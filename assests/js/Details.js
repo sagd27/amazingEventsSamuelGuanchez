@@ -1,3 +1,4 @@
+
 import * as pintartarjertas from "../modulos/modulo.js"
 
  // Obtener el parámetro de consulta 'id' de la URL
@@ -11,9 +12,11 @@ fetch('https://aulamindhub.github.io/amazing-api/events.json')
     .then(data => {
 
 
+
       
 // Buscar el evento seleccionado por ID
  const selectedEvent = data.events.find(evento => evento._id === Number(eventId));
+
  const eventsArray = [];
  eventsArray.push(selectedEvent);
 
@@ -27,7 +30,7 @@ pintartarjertas.cardDetails(data)
 
 }else {
     // Mostrar un mensaje si no hay evento seleccionado
-
+    console.log("Aqui No ")
 
     document.getElementById("contenedor").innerHTML = "<p>No hay detalles para mostrar.</p>";
 }
