@@ -1,3 +1,9 @@
+
+body{
+    background-color: #BABCFA;
+
+}
+
 .main{
     min-height: 80vh;
     width: 100%;
@@ -10,9 +16,10 @@
         padding: 10px;
 
 }
-.nbar{
 
-        background-color: #91C8FA;
+
+.a-nav{
+ color: white !important;
 }
 
 .search-bar {
@@ -21,7 +28,7 @@
 .chk{
 
 border-color: black ;
-
+border-radius: 100% !important;
 }
 .card {
        min-width: 300px;
@@ -36,18 +43,26 @@ border-color: black ;
     object-fit: cover;
 }
 
-  
-    .btn-detail{
 
-        background-color: #91C8FA;
+
+.btn-detail{
+
+        background-color: #BABCFA !important;
 
 }
 
+.card-details{
+border: 2px solid black;
+
+}
+
+
 footer {
-    background-color: #91C8FA;
+  
     padding: 20px 0;
     width: 100%;
 }
+
 .social-icons img {
     width: 40px; /* Tamaño de las imágenes de redes sociales */
     height: 40px;
@@ -67,8 +82,8 @@ footer {
 .img-detail{
 
     object-fit: cover;
-    height: 100%;
-    max-height: 300px;
+    height:40%;
+    width: 400px;
 
 }
 

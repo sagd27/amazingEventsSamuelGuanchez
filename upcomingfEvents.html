@@ -23,7 +23,7 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-md nbar">
+      <nav class="navbar navbar-expand-md nbar bg-black">
         <div class="container-fluid">
           <img
             class="img-fluid logo"
@@ -49,12 +49,11 @@
             id="navbarSupportedContent"
           >
             <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="./index.html">Home </a>
-              <a class="nav-item nav-link" href="#">Upcoming Events </a>
-              <a class="nav-item nav-link" href="./pastEvents.html">Past Events</a>
-              <a class="nav-item nav-link" href="./contactUs.html">Contact</a>
-              <a class="nav-item nav-link" href="./Details.html">Details</a>
-              <a class="nav-item nav-link" href="./Stats.html">Stast</a>
+              <a class="nav-item nav-link active text-light" href="./index.html">Home </a>
+              <a class="nav-item nav-link text-light fw-semibold" href="#">Upcoming Events </a>
+              <a class="nav-item nav-link text-light" href="./pastEvents.html">Past Events</a>
+              <a class="nav-item nav-link text-light" href="./contactUs.html">Contact</a>
+              <a class="nav-item nav-link text-light" href="./Stats.html">Stast</a>
             </div>
           </div>
         </div>
@@ -62,32 +61,35 @@
     </header>
 
     <main class="container-fluid main">
-      <div class="container-fluid align-items-center justify-content-center ">
-        <div class="row align-items-center m-4 mt-4 ">
+      
+      <div class="container-fluid d-flex align-items-center  ">
+       
+        <div class="row align-items-center m-4 mt-4 flex-grow-1 ">
           <!-- Contenedor de checkboxes -->
-          <div class="col-12 col-md-6 d-flex flex-wrap gap-3 " id="checkboxContainer">
+          <div class="d-flex flex-wrap gap-3 fw-semibold " id="checkboxContainer">
             <!-- Aquí se generarán dinámicamente los checkboxes -->
           </div>
-      
+        </div>
           <!-- Barra de búsqueda -->
 
-          <div class="col-12 col-md-6 d-flex justify-content-md-end mt-3 mt-md-0 search-bar  " id="search-bar">
-            <div class="input-group">
+          <div class=" d-flex  m-4 search-bar  " id="search-bar">
+            <div class="input-group ">
               <input
                 type="text"
                 class="form-control"
                 placeholder="Buscar"
                 aria-label="Buscar"
               />
-              <div class="input-group-append">
+              <div class="input-group-append ">
                 <button class="btn btn-outline-secondary" type="button">
                   <i class="fas fa-search"></i>
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        
       </div>
+
 
       
       
@@ -100,7 +102,7 @@
       
     </main>
 
-    <footer class="footer container-fluid d-flex justify-content-between mt-5 p-3">
+    <footer class="footer container-fluid d-flex justify-content-between mt-5 p-3 bg-black" >
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-10 col-md-9 d-flex align-items-center">
@@ -132,7 +134,7 @@
           <div
             class="col-lg-2 col-md-3 d-flex align-items-center justify-content-end"
           >
-            <p class="text-uppercase font-weight-bold">COHORT</p>
+            <p class="text-uppercase font-weight-bold text-light">COHORT</p>
           </div>
         </div>
       </div>
